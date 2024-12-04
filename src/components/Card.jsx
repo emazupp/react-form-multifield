@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Checkbox from "./Form/Checkbox";
 
 export default function Card({
   item,
@@ -26,16 +27,11 @@ export default function Card({
 
           <img className="img-fluid" src={img} alt={`img-${img}`} />
 
-          {item.author && (
-            <p>
-              <b>Autore:</b> {item.author}
-            </p>
-          )}
-          {item.status && (
-            <p>
-              <b>Categoria: </b> {item.status}
-            </p>
-          )}
+          <p>
+            Categoria: {item.category ? item.category : "Nessuna categoria"}
+          </p>
+          <Checkbox text="Published" formData={item.status} />
+
           <div className="d-flex justify-content-end gap-2">
             <Button icon="trash" id={item.id} handleFunction={handleDelete} />
             <button type="submit" className="btn btn-warning">

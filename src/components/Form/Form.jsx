@@ -1,6 +1,6 @@
-import Dropdown from "./Dropdown";
 import InputText from "./InputText";
 import Checkbox from "./Checkbox";
+import Select from "./Select";
 export default function Form({ formData, handleCreate, handleChangeForm }) {
   return (
     <>
@@ -25,8 +25,16 @@ export default function Form({ formData, handleCreate, handleChangeForm }) {
         />
 
         <div className="d-flex justify-content-between">
-          <Dropdown handleChangeForm={handleChangeForm} />
-          <Checkbox text="Published" handleChangeForm={handleChangeForm} />
+          <Select
+            handleChangeForm={handleChangeForm}
+            formData={formData.category}
+          />
+          <Checkbox
+            text="Published"
+            handleChangeForm={handleChangeForm}
+            formData={formData.status}
+            name="status"
+          />
           <button type="submit" className="btn btn-primary">
             Invia
           </button>

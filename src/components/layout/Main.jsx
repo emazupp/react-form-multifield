@@ -17,6 +17,8 @@ export default function Main() {
   const [editedTitle, setEditedTitle] = useState("");
   const [articles, setArticle] = useState(articoli);
 
+  console.log(formData);
+
   const handleChangeForm = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -46,9 +48,8 @@ export default function Main() {
     const newArticles = articles;
     newArticles[indexEditArticle].title = editedTitle;
     setArticle(newArticles);
+
     alert("Titolo modificato in: " + editedTitle);
-    setEditedTitle("");
-    console.log(editedTitle);
   };
 
   return (
@@ -75,6 +76,7 @@ export default function Main() {
               item={item}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
+              setEditedTitle={setEditedTitle}
             />
           );
         })}
