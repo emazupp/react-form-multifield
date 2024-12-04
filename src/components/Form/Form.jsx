@@ -1,6 +1,6 @@
 import Dropdown from "./Dropdown";
 import InputText from "./InputText";
-
+import Checkbox from "./Checkbox";
 export default function Form({ handleCreate, setTitle, setAuthor, setStatus }) {
   return (
     <>
@@ -10,6 +10,7 @@ export default function Form({ handleCreate, setTitle, setAuthor, setStatus }) {
 
         <div className="d-flex justify-content-between">
           <Dropdown setStatus={setStatus} />
+          <Checkbox text="Published" />
           <button type="submit" className="btn btn-primary">
             Invia
           </button>

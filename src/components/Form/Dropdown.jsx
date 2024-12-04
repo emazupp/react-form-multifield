@@ -2,7 +2,7 @@ import "bootstrap/js/dist/dropdown";
 import { useState } from "react";
 
 export default function Dropdown({ setStatus }) {
-  const [selectedStatus, setSelectedStatus] = useState("stato");
+  const [selectedStatus, setSelectedStatus] = useState("Seleziona categoria");
   const handleSelectedStatus = (selection) => {
     setSelectedStatus(selection);
     setStatus(selection);
@@ -21,15 +21,21 @@ export default function Dropdown({ setStatus }) {
       <ul className="dropdown-menu">
         <li
           className="dropdown-item"
-          onClick={() => handleSelectedStatus("draft")}
+          onClick={() => handleSelectedStatus("Categoria 1")}
         >
-          draft
+          Categoria 1
         </li>
         <li
           className="dropdown-item"
-          onClick={() => handleSelectedStatus("published")}
+          onClick={() => handleSelectedStatus("Categoria 2")}
         >
-          published
+          Categoria 2
+        </li>
+        <li
+          className="dropdown-item"
+          onClick={() => handleSelectedStatus("Categoria 3")}
+        >
+          Categoria 3
         </li>
       </ul>
     </div>
