@@ -32,6 +32,7 @@ export default function Main() {
   /* CREATE */
   const handleCreate = (e) => {
     e.preventDefault();
+    formData.id = articles[articles.length - 1].id + 1;
     setArticle([...articles, { ...formData }]);
     setFormData(initialFormData);
   };
