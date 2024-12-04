@@ -1,11 +1,11 @@
 import "bootstrap/js/dist/dropdown";
 import { useState } from "react";
 
-export default function Dropdown({ setStatus }) {
+export default function Dropdown({ handleChangeForm }) {
   const [selectedStatus, setSelectedStatus] = useState("Seleziona categoria");
   const handleSelectedStatus = (selection) => {
     setSelectedStatus(selection);
-    setStatus(selection);
+    handleChangeForm;
   };
 
   return (

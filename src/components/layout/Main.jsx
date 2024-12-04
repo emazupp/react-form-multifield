@@ -3,12 +3,29 @@ import { articoli } from "../../data/articoli";
 import { useState } from "react";
 import Card from "../Card";
 
+const initialFormData = {
+  title: "",
+  image: "",
+  author: "",
+  category: "",
+  status: "draft",
+};
+
 export default function Main() {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [status, setStatus] = useState("");
+  const [formData, setFormData] = useState(initialFormData);
+
   const [editedTitle, setEditedTitle] = useState("");
   const [articles, setArticle] = useState(articoli);
+
+  const handleChangeForm = (e) => {
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: value,
+    }));
+  };
 
   /* CREATE */
   const handleCreate = (e) => {
@@ -48,10 +65,9 @@ export default function Main() {
         <div className="col-6">
           <div className="card p-4">
             <Form
+              formData={formData}
               handleCreate={handleCreate}
-              setTitle={setTitle}
-              setAuthor={setAuthor}
-              setStatus={setStatus}
+              handleChangeForm={handleChangeForm}
             />
           </div>
         </div>
