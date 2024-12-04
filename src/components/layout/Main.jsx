@@ -1,6 +1,6 @@
 import Form from "../Form/Form";
 import { articoli } from "../../data/articoli";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Card";
 
 const initialFormData = {
@@ -15,9 +15,8 @@ export default function Main() {
   const [formData, setFormData] = useState(initialFormData);
 
   const [editedTitle, setEditedTitle] = useState("");
+  const [editStatus, setEditStatus] = useState("");
   const [articles, setArticle] = useState(articoli);
-
-  console.log(formData);
 
   const handleChangeForm = (e) => {
     const value =
@@ -42,16 +41,28 @@ export default function Main() {
     setArticle(articles.filter((item) => item.id != id));
   };
 
-  /* EDIT */
+  /* EDIT TITLE */
   const handleEdit = (event, id) => {
     event.preventDefault();
     const indexEditArticle = articles.findIndex((item) => item.id == id);
     const newArticles = articles;
     newArticles[indexEditArticle].title = editedTitle;
     setArticle(newArticles);
-
     alert("Titolo modificato in: " + editedTitle);
   };
+
+  const handleEditStatus = (id) => {
+    const newStatus = !editStatus;
+    const indexEditStatus = articles.findIndex((item) => item.id == id);
+    const newArticles = articles;
+    newArticles[indexEditStatus].status = newStatus;
+    setEditStatus(newStatus);
+    setArticle(newArticles);
+  };
+
+  useEffect(() => {
+    if (editStatus) alert("Articolo pubblicato");
+  }, [editStatus]);
 
   return (
     <main>
@@ -78,6 +89,7 @@ export default function Main() {
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               setEditedTitle={setEditedTitle}
+              handleEditStatus={handleEditStatus}
             />
           );
         })}

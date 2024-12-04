@@ -1,11 +1,11 @@
 import Button from "./Button";
 import Checkbox from "./Form/Checkbox";
-
 export default function Card({
   item,
   handleEdit,
   handleDelete,
   setEditedTitle,
+  handleEditStatus,
 }) {
   const img = item.image === "" ? "https://placehold.co/600x400" : item.image;
   return (
@@ -30,7 +30,12 @@ export default function Card({
           <p>
             Categoria: {item.category ? item.category : "Nessuna categoria"}
           </p>
-          <Checkbox text="Published" formData={item.status} />
+          <Checkbox
+            text="Published"
+            formData={item.status}
+            handleEditStatus={handleEditStatus}
+            id={item.id}
+          />
 
           <div className="d-flex justify-content-end gap-2">
             <Button icon="trash" id={item.id} handleFunction={handleDelete} />

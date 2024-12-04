@@ -1,4 +1,11 @@
-export default function Checkbox({ name, formData, text, handleChangeForm }) {
+export default function Checkbox({
+  name,
+  formData,
+  text,
+  handleChangeForm,
+  handleEditStatus,
+  id,
+}) {
   return (
     <>
       <div>
@@ -7,7 +14,9 @@ export default function Checkbox({ name, formData, text, handleChangeForm }) {
         </label>
         <input
           name={name}
-          onChange={handleChangeForm}
+          onChange={
+            handleChangeForm ? handleChangeForm : () => handleEditStatus(id)
+          }
           type="checkbox"
           id={`checkbox-${text}`}
           checked={formData}
