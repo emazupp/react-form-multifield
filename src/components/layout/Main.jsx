@@ -30,14 +30,8 @@ export default function Main() {
   /* CREATE */
   const handleCreate = (e) => {
     e.preventDefault();
-    const newArticle = {
-      id: articles[articles.length - 1].id + 1,
-      title,
-      author,
-      status,
-    };
-    console.log(newArticle);
-    setArticle([...articles, newArticle]);
+    setArticle([...articles, { ...formData }]);
+    setFormData(initialFormData);
   };
 
   /* DELETE */
